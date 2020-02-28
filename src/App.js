@@ -1,5 +1,5 @@
 import React from 'react';
-import MallContainer from './containers/Mall';
+import MallContainer from './containers/MallContainer';
 
 const App = () => {
   return (
