@@ -3,15 +3,7 @@ import React from 'react';
 class Login extends React.Component {
     state = {
         username: '',
-        password: '',
-        role: '',
-        users: [],
-    }
-
-    componentDidMount() {
-        fetch('http://localhost:3000/users')
-        .then(response => response.json())
-        .then(users => this.setState({ users: users }))
+        password: ''
     }
 
     handleChange = (event) => {
@@ -20,8 +12,7 @@ class Login extends React.Component {
     }
     
     handleSubmit = (event) => {
-        event.preventDefault()
-        console.log('this will change later')
+        console.log('handle the login')
     }
 
     render() {
@@ -33,14 +24,7 @@ class Login extends React.Component {
                 <label>Password:
                 <input type='text' name='password' value={this.state.password} onChange={this.handleChange}/>
                 </label>
-                <label>Role: 
-                    <select name='role' value={this.state.role} onChange={this.handleChange}>
-                        <option name='role' value=''>Select role</option>
-                        <option name='role' value='owner'>Owner</option>
-                        <option name='role' value='shopper'>Shopper</option>
-                    </select>
-                </label>
-                <button type="submit" value="Submit" disabled={!this.state.role}> Submit </button>
+                <button type="submit" value="Submit" disabled={!this.state.role}> Log in </button>
             </form>
         )
     }
