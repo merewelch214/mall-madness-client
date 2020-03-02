@@ -10,17 +10,47 @@ class App extends React.Component {
     currentUser: null
   } // we can pass down the current user and show different views if props.currentUser.role === 'owner' or 'shopper'
 
+  componentDidMount() {
+    const user_id = localStorage.user_id
+    if (user_id) {
+      fetch('http://localhost:3000/auto_login', {
+        headers: {'Authorization': user_id}
+        })
+        .then(resp => resp.json())
+        .then(response => {
+          if (response.errors){
+            alert(response.errors)
+          } else {
+            this.setState({
+              currentUser: user
+            })
+          }
+        })
+      }
+    }
   setUser = (user) => {
     this.setState({
       currentUser: user
     }, () => {
       if (this.state.currentUser.role === 'shopper') {
+        localStorage.user_id = user.user.id
+        localStorage.role = user.role
         this.props.history.push('/mall')
       } else if (this.state.currentUser.role === 'owner') {
+        localStorage.user_id = user.user.id
+        localStorage.role = user.role
         this.props.history.push('/store') // need to redirect to the particular owners store
       } 
     })
   } 
+
+  // TO DO: add log out button
+  // logOut = () => {
+  //   this.setState({
+  //     currentUser: null
+  //   }, () => {this.props.history.push('/login')}
+  //   )
+  // }
   
   render() {  
     return (
