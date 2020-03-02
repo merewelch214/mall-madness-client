@@ -19,8 +19,9 @@ class ProductForm extends React.Component {
         this.setState({ name: '', description: '', price: '', image: '' })
     }
 
+    
+
     render() {
-        console.log(this.state)
         return (
             <form id='create-product-form' onSubmit={this.submitHandler}>
 
