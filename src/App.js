@@ -22,7 +22,7 @@ class App extends React.Component {
             alert(response.errors)
           } else {
             this.setState({
-              currentUser: user
+              currentUser: response
             })
           }
         })
@@ -33,11 +33,11 @@ class App extends React.Component {
       currentUser: user
     }, () => {
       if (this.state.currentUser.role === 'shopper') {
-        localStorage.user_id = user.user.id
+        localStorage.user_id = user.id
         localStorage.role = user.role
         this.props.history.push('/mall')
       } else if (this.state.currentUser.role === 'owner') {
-        localStorage.user_id = user.user.id
+        localStorage.user_id = user.id
         localStorage.role = user.role
         this.props.history.push('/store') // need to redirect to the particular owners store
       } 
@@ -53,13 +53,13 @@ class App extends React.Component {
   // }
   
   render() {  
+    // console.log(this.state.currentUser)
     return (
       <Router> 
         <Route exact path='/signup' render={() => <SignUp setUser={this.setUser}/> } />
         <Route exact path='/login' render={() => <Login setUser={this.setUser}/> } />
-        <Route path='/store' component={Store}/>
-        <Route path='/mall' component={MallContainer}/>
-
+        <Route path='/store' component={() => <Store currentUser={this.state.currentUser} /> }/>
+        <Route path='/mall' component={() => <MallContainer currentUser={this.state.currentUser} /> }/>
       </Router> 
     )
   }

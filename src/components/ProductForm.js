@@ -5,7 +5,8 @@ class ProductForm extends React.Component {
         name: '',
         description: '',
         price: '',
-        image: ''
+        image: '',
+        store_id: this.props.id
     }
 
     updateState = (event) => {

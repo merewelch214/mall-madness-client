@@ -12,6 +12,7 @@ class Login extends React.Component {
     }
     
     handleSubmit = (event) => {
+        event.preventDefault()
         fetch('http://localhost:3000/login', {
                 method: 'POST',
                 headers: {
@@ -29,7 +30,7 @@ class Login extends React.Component {
                 } else {
                 this.props.setUser(response)}
             })
-            }
+        }
     
     render() {
         return (
