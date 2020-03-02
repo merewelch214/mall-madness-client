@@ -6,7 +6,7 @@ class Cart extends React.Component {
     componentDidMount() {
         fetch(`http://localhost:3000/carts`)
         .then(resp => resp.json())
-        .then(data => console.log)
+        .then(data => console.log(data))
     }
     
     render(){

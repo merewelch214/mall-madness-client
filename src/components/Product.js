@@ -46,9 +46,9 @@ class Product extends React.Component {
         <div>
             <h1>{this.props.name}</h1>
             <img src={this.props.img_url} alt={this.props.name}/>
-            {this.state.inCart ? 
+            { this.state.inCart ? 
                 <button onClick={() => this.removeFromCart(this.props.id)}>Remove from Cart</button> : 
-                <button onClick={() => this.addToCart(this.props.id)}>Add to Cart</button>}
+                <button onClick={() => this.addToCart(this.props.id)}>Add to Cart</button> }
         </div>
         )
     }

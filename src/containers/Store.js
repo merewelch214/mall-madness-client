@@ -18,7 +18,7 @@ class Store extends React.Component {
             body: JSON.stringify(product)
         })
         .then(response => response.json())
-        .then(newProduct => this.setState({ products : [...this.state.products, newProduct] }))
+        .then(newProduct => this.setState({ products : [...this.state.store.products, newProduct] }))
     }
 
     changeDisplayForm = () => {
