@@ -37,7 +37,7 @@ class MallContainer extends React.Component {
     // }
 
     render(){
-        // console.log(this.state.chosenStore) 
+        console.log('rendered mall') 
         return (
             <div>
                 {this.state.chosenStore ? <Store key={this.state.chosenStore.id} {...this.state.chosenStore} revertChosen={this.revertChosen}/> 

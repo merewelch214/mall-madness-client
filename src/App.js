@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { withRouter, Route, Switch } from 'react-router';
 import MallContainer from './containers/MallContainer';
 import Login from './components/Login'
 import SignUp from './components/SignUp'
@@ -20,9 +20,9 @@ class App extends React.Component {
         .then(response => {
           if (response.errors){
             alert(response.errors)
-          } else {
+          } else {  
             this.setState({
-              currentUser: user
+              currentUser: response
             })
           }
         })
@@ -33,11 +33,11 @@ class App extends React.Component {
       currentUser: user
     }, () => {
       if (this.state.currentUser.role === 'shopper') {
-        localStorage.user_id = user.user.id
+        localStorage.user_id = user.id
         localStorage.role = user.role
         this.props.history.push('/mall')
       } else if (this.state.currentUser.role === 'owner') {
-        localStorage.user_id = user.user.id
+        localStorage.user_id = user.id
         localStorage.role = user.role
         this.props.history.push('/store') // need to redirect to the particular owners store
       } 
@@ -54,15 +54,14 @@ class App extends React.Component {
   
   render() {  
     return (
-      <Router> 
-        <Route exact path='/signup' render={() => <SignUp setUser={this.setUser}/> } />
-        <Route exact path='/login' render={() => <Login setUser={this.setUser}/> } />
-        <Route path='/store' component={Store}/>
-        <Route path='/mall' component={MallContainer}/>
-
-      </Router> 
+      <Switch> 
+        <Route path='/store' render={() => <Store currentUser={this.state.currentUser} /> } />
+        <Route path='/mall' render={(routerProps) => <MallContainer currentUser={this.state.currentUser} {...routerProps} /> } />
+        <Route path='/login' render={() => <Login setUser={this.setUser}/> } />
+        <Route path='/signup' render={() => <SignUp setUser={this.setUser}/> } />
+      </Switch> 
     )
   }
 }
 
-export default App;
+export default withRouter(App);
