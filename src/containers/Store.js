@@ -6,7 +6,7 @@ class Store extends React.Component {
 
     state = {
         displayForm: false,
-        products: this.props.products
+        store: {}
     }
 
     submitNewProduct = (product) => {
@@ -25,19 +25,30 @@ class Store extends React.Component {
         this.setState({ displayForm: !this.state.displayForm })
     }
 
+    componentDidMount(){
+        if (this.props.currentUser.role === 'owner'){
+            fetch(`http://localhost:3000/showBasedOnOwner/${this.props.currentUser.id}`)
+            .then(response => response.json())
+            .then(store => {
+                this.setState({ store: store })
+            })
+        } else {
+            this.setState({ store: this.props })
+        }
+    }
+
     render(){
+        console.log(this.state)
+        const { name, products, id } = this.state.store
         return (
             <div>
-                <h2>{this.props.name}</h2>
-                {this.props.products.map(product => {
+                <h2>{name}</h2>
+                {products ? products.map(product => {
                     return <Product key={product.id} {...product} currentUser={this.props.currentUser}/>
-                })}
-                <button onClick={this.changeDisplayForm}>Toggle Form</button>
-                {this.state.displayForm ? <ProductForm id={this.props.id} submitNewProduct={this.submitNewProduct} /> : null}
-                
-                {/* <Product parent={"store"}/> */}
-                <h1> ---------- </h1>
-                <button onClick={this.props.revertChosen}>Back To Mall View</button>
+                }) : null}
+                {this.props.currentUser.role === 'owner' ? <button onClick={this.changeDisplayForm}>Toggle Form</button> : <div><h1> ---------- </h1>
+                <button onClick={this.props.revertChosen}>Back To Mall View</button></div>}
+                {this.state.displayForm ? <ProductForm id={id} submitNewProduct={this.submitNewProduct} /> : null}
             </div>
         )
     }
