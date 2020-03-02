@@ -26,12 +26,11 @@ class Store extends React.Component {
     }
 
     render(){
-        // console.log(this.props.name, "products are", this.props.products)
         return (
             <div>
                 <h2>{this.props.name}</h2>
                 {this.props.products.map(product => {
-                    return <Product key={product.id} {...product} />
+                    return <Product key={product.id} {...product} currentUser={this.props.currentUser}/>
                 })}
                 <button onClick={this.changeDisplayForm}>Toggle Form</button>
                 {this.state.displayForm ? <ProductForm id={this.props.id} submitNewProduct={this.submitNewProduct} /> : null}

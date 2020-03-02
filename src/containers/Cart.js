@@ -2,6 +2,13 @@ import React from 'react';
 import Product from '../components/Product'
 
 class Cart extends React.Component {
+    
+    componentDidMount() {
+        fetch(`http://localhost:3000/carts`)
+        .then(resp => resp.json())
+        .then(data => console.log)
+    }
+    
     render(){
         return (
             <div>
