@@ -29,15 +29,12 @@ class Login extends React.Component {
                 if (response.errors){
                     alert(response.errors)
                 } else {
-                    console.log('success')
                     this.props.setUser(response)
-                    console.log('currUser:',response)
                 }
             })
             }
     
     render() {
-        console.log('login page')
         return (
             <div>
                 <form onSubmit={this.handleSubmit}> 
