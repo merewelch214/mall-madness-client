@@ -8,7 +8,6 @@ class MallContainer extends React.Component {
 
     state = {
         stores: [],
-        products: [],
         chosenStore: ''
     }
 
@@ -16,10 +15,6 @@ class MallContainer extends React.Component {
         fetch('http://localhost:3000/stores')
         .then(response => response.json())
         .then(stores => this.setState({ stores: stores }))
-
-        fetch('http://localhost:3000/products')
-        .then(response => response.json())
-        .then(products => this.setState({ products: products }))
     }
 
     setStore = (store) => {

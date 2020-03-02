@@ -53,6 +53,7 @@ class App extends React.Component {
   // }
   
   render() {  
+    // console.log(this.state.currentUser)
     return (
       <Switch> 
         <Route path='/store' render={() => <Store currentUser={this.state.currentUser} /> } />

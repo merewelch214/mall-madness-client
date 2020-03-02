@@ -33,7 +33,7 @@ class Login extends React.Component {
                     console.log('currUser:',response)
                 }
             })
-            }
+        }
     
     render() {
         return (
