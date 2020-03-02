@@ -4,6 +4,7 @@ import MallContainer from './containers/MallContainer';
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import Store from './containers/Store'
+import WelcomePage from './containers/WelcomePage'
 
 class App extends React.Component {
   state = {
@@ -56,10 +57,11 @@ class App extends React.Component {
     // console.log(this.state.currentUser)
     return (
       <Switch> 
+        <Route path='/signup' render={() => <SignUp setUser={this.setUser}/> } />
+        <Route path='/login' render={() => <Login setUser={this.setUser}/> } />
         <Route path='/store' render={() => <Store currentUser={this.state.currentUser} /> } />
         <Route path='/mall' render={(routerProps) => <MallContainer currentUser={this.state.currentUser} {...routerProps} /> } />
-        <Route path='/login' render={() => <Login setUser={this.setUser}/> } />
-        <Route path='/signup' render={() => <SignUp setUser={this.setUser}/> } />
+        <Route path='/' component={WelcomePage} />
       </Switch> 
     )
   }
