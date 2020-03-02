@@ -25,8 +25,12 @@ class Store extends React.Component {
         this.setState({ displayForm: !this.state.displayForm })
     }
 
+    componentDidMount(){
+
+    }
+
     render(){
-        // console.log(this.props.name, "products are", this.props.products)
+        console.log(this.props)
         return (
             <div>
                 <h2>{this.props.name}</h2>

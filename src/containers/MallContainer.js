@@ -35,12 +35,12 @@ class MallContainer extends React.Component {
         console.log('rendered mall') 
         return (
             <div>
-                {this.state.chosenStore ? <Store key={this.state.chosenStore.id} {...this.state.chosenStore} revertChosen={this.revertChosen}/> 
+                { this.state.chosenStore ? <Store key={this.state.chosenStore.id} {...this.state.chosenStore} revertChosen={this.revertChosen}/> 
                 : <div><h1>Mall Madness!</h1> <h1>-------------</h1><br />
                 <h1>Please select a store:</h1> {this.state.stores.map(store => {
                     return <StoreList setStore={this.setStore} key={store.id} store={store} />
-                })}</div>}
-                {this.state.stores ? null : <StoreForm /> }
+                })}</div> }
+                { this.state.stores ? null : <StoreForm /> }
                 <Cart />
             </div>
         )
