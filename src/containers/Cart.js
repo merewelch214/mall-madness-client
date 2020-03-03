@@ -9,18 +9,18 @@ class Cart extends React.Component {
     componentDidMount() {
         fetch(`http://localhost:3000/carts/${this.props.currentUser.cart.id}`)
         .then(response => response.json())
-        .then(data => console.log(data.products))
+        .then(data => this.setState({products: data.products}))
     }
     
     render(){
-        return (
+            return (
             <div>
                 <h1>Cart</h1>
-                {this.state.products.map(product => {
-                    return <Product />})}
+                {this.state.products.length > 1 ? 'Items in your cart' : 'Your cart is empty'}
             </div>
         )
     }
 }
 
 export default Cart;
+// this.products.map(product => product.name)

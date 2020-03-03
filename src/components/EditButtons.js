@@ -22,12 +22,16 @@ class EditButtons extends React.Component {
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                cart_id: this.props.currentUser.cart.id
+                name: 'new name',
+                description: 'new price',
+                price: 'new price',
+                img_url: 'new image'  
             })
         })
     }
 
     handleDelete = (id) => {
+        // to do: remove product
         console.log('testing delete')
         fetch(`http://localhost:3000/products/${id}`, {
             method: 'DELETE',
@@ -36,12 +40,9 @@ class EditButtons extends React.Component {
                 'Accept': 'application/json'
             }
         })
-        .then(resp=>resp.json())
-        .then(data => console.log(data))
     }
     
     render() {
-        console.log(this.props)
         return (
             <div>
                 <button onClick={() => this.handleEdit(this.props.currentProductId)}>Edit</button>
