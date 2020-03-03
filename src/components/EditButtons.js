@@ -14,7 +14,6 @@ class EditButtons extends React.Component {
 
     
     handleEdit = (id) => {
-        console.log('edit button')
         fetch(`http://localhost:3000/products/${id}`, {
             method: 'PATCH',
             headers: {
@@ -45,8 +44,8 @@ class EditButtons extends React.Component {
     render() {
         return (
             <div>
-                <button onClick={() => this.handleEdit(this.props.currentProductId)}>Edit</button>
-                <button onClick={() => this.handleDelete(this.props.currentProductId)}>Delete</button>
+                <button onClick={() => this.handleEdit(this.props.currentProduct.id)}>Edit</button>
+                <button onClick={() => this.handleDelete(this.props.currentProduct.id)}>Delete</button>
             </div>
         )
     }

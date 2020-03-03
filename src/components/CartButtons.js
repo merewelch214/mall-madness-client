@@ -1,15 +1,8 @@
 import React from 'react';
 
 class CartButtons extends React.Component {
-
-    state = {
-        inCart: false
-    }
-
+ 
     addToCart = (id) => {
-        this.setState({
-            inCart: true
-        })
         fetch(`http://localhost:3000/products/${id}`, {
             method: 'PATCH',
             headers: {
@@ -17,15 +10,14 @@ class CartButtons extends React.Component {
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                cart_id: this.props.currentUser.cart.id
+                cart_id: this.props.currentProduct.currentUser.cart.id
             })
         })
+        .then(resp => resp.json())
+        .then(data => console.log(data))
     }
 
     removeFromCart = (id) => {
-        this.setState({
-            inCart: false
-        })
         fetch(`http://localhost:3000/products/${id}`, {
             method: 'PATCH',
             headers: {
@@ -37,13 +29,14 @@ class CartButtons extends React.Component {
             })
         })
     }
-
+    
     render() {
+        console.log('')
         return (
             <div>
-            { this.state.inCart ? 
-                <button onClick={() => this.removeFromCart(this.props.currentProductId)}>Remove from Cart</button> : 
-                <button onClick={() => this.addToCart(this.props.currentProductId)}>Add to Cart</button> }
+            { this.props.currentProduct.cart_id ?
+                <button onClick={() => this.removeFromCart(this.props.currentProduct.id)}>Remove from Cart</button> : 
+                <button onClick={() => this.addToCart(this.props.currentProduct.id)}>Add to Cart</button> }
             </div>
         )
     }
