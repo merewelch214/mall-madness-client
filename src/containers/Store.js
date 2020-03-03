@@ -33,11 +33,14 @@ class Store extends React.Component {
                 this.setState({ store: store })
             })
         } else {
-            this.setState({ store: this.props })
+            const matchingStore = this.props.stores.find(store => store.name === this.props.match.params.storeName)
+            this.setState({ store: matchingStore })
+            // console.log(this.props.match.params.storeName)
         }
     }
 
     render(){
+        console.log(this.props)
         const { name, products, id } = this.state.store
         return (
             <div>
@@ -45,8 +48,7 @@ class Store extends React.Component {
                 {products ? products.map(product => {
                     return <Product key={product.id} currentUser={this.props.currentUser} {...product} />
                 }) : null}
-                {this.props.currentUser.role === 'owner' ? <button onClick={this.changeDisplayForm}>Toggle Form</button> : <div><h1> ---------- </h1>
-                <button onClick={this.props.revertChosen}>Back To Mall View</button></div>}
+                {this.props.currentUser.role === 'owner' ? <button onClick={this.changeDisplayForm}>Toggle Form</button> : null}
                 {this.state.displayForm ? <ProductForm id={id} submitNewProduct={this.submitNewProduct} /> : null}
             </div>
         )
