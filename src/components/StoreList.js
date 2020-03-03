@@ -1,9 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const StoreList = (props) => {
-    // console.log(props)
     return (
-        <li onClick={() => props.setStore(props.store)}>{props.store.name}</li>
+       <li> <Link to={`store/${props.store.id}`}>{props.store.name}</Link> </li>
     )
 }
 
