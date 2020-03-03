@@ -1,12 +1,14 @@
 import React from 'react';
 import Product from '../components/Product'
 import ProductForm from '../components/ProductForm'
+import NavBar from '../components/NavBar'
 
 class Store extends React.Component {
 
     state = {
         displayForm: false,
-        store: {}
+        store: {},
+        products: []
     }
 
     submitNewProduct = (product) => {
@@ -34,19 +36,31 @@ class Store extends React.Component {
             })
         } else {
             const matchingStore = this.props.stores.find(store => store.name === this.props.match.params.storeName)
-            this.setState({ store: matchingStore })
+            this.setState({ store: matchingStore, products: matchingStore.products })
             // console.log(this.props.match.params.storeName)
         }
     }
 
+    
+
+    updateProducts = (product) => {
+        const findMatch = (stateProduct) => stateProduct.id === product.id
+        const index = this.state.products.findIndex(findMatch)
+        let copyArray = this.state.products
+        copyArray[index] = product 
+        this.setState({
+            products: copyArray
+        })
+    }
+
     render(){
-        console.log(this.props)
-        const { name, products, id } = this.state.store
+        const { name, id } = this.state.store
         return (
             <div>
+                <NavBar />
                 <h2>{name}</h2>
-                {products ? products.map(product => {
-                    return <Product key={product.id} currentUser={this.props.currentUser} {...product} />
+                {this.state.products ? this.state.products.map(product => {
+                    return <Product key={product.id} currentUser={this.props.currentUser} {...product} updateProducts={this.updateProducts}/>
                 }) : null}
                 {this.props.currentUser.role === 'owner' ? <button onClick={this.changeDisplayForm}>Toggle Form</button> : null}
                 {this.state.displayForm ? <ProductForm id={id} submitNewProduct={this.submitNewProduct} /> : null}

@@ -10,8 +10,9 @@ import Cart from './containers/Cart'
 class App extends React.Component {
   state = {
     currentUser: null,
-    stores: []
-  } // we can pass down the current user and show different views if props.currentUser.role === 'owner' or 'shopper'
+    stores: [], 
+    cart: []
+  } 
 
   componentDidMount() {
     const user_id = localStorage.user_id
@@ -51,6 +52,12 @@ class App extends React.Component {
     })
   } 
 
+  fillCart = () => {
+    fetch(`http://localhost:3000/carts${this.state.currentUser.cart.id}`)
+    .then(response => response.json())
+    .then(cart => this.setState({ cart: cart }))
+  }
+
   // TO DO: add log out button
   // logOut = () => {
   //   this.setState({
@@ -60,15 +67,15 @@ class App extends React.Component {
   // }
   
   render() {  
-    // console.log(this.state.currentUser)
+    console.log(this.state.currentUser)
     return (
       <Switch> 
         <Route path='/signup' render={() => <SignUp setUser={this.setUser}/> } />
-        <Route path='/login' render={() => <Login setUser={this.setUser}/> } />
+        <Route path='/login' render={() => <Login setUser={this.setUser} userCart={this.fillCart}/> } />
         <Route path='/store/:storeName' render={(routerProps) => <Store currentUser={this.state.currentUser} {...routerProps} stores={this.state.stores}/> }/>
-        <Route path='/store' render={() => <Store currentUser={this.state.currentUser} /> } />
+        <Route path='/store' render={() => <Store currentUser={this.state.currentUser}/> } />
         <Route path='/mall' render={(routerProps) => <MallContainer currentUser={this.state.currentUser} {...routerProps} stores={this.state.stores} /> } />
-        <Route path='/cart' render={() => <Cart currentUser={this.state.currentUser} /> } />
+        <Route path='/cart' render={() => <Cart currentUser={this.state.currentUser} userCart={this.fillCart} /> } />
         <Route path='/' component={WelcomePage} />
       </Switch> 
     )
