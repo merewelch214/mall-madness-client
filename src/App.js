@@ -5,10 +5,12 @@ import Login from './components/Login'
 import SignUp from './components/SignUp'
 import Store from './containers/Store'
 import WelcomePage from './containers/WelcomePage'
+import Cart from './containers/Cart'
 
 class App extends React.Component {
   state = {
-    currentUser: null
+    currentUser: null,
+    stores: []
   } // we can pass down the current user and show different views if props.currentUser.role === 'owner' or 'shopper'
 
   componentDidMount() {
@@ -17,18 +19,22 @@ class App extends React.Component {
       fetch('http://localhost:3000/auto_login', {
         headers: {'Authorization': user_id}
         })
-        .then(resp => resp.json())
-        .then(response => {
-          if (response.errors){
-            alert(response.errors)
-          } else {  
-            this.setState({
-              currentUser: response
-            })
-          }
-        })
-      }
+      .then(resp => resp.json())
+      .then(response => {
+        if (response.errors){
+          alert(response.errors)
+        } else {  
+          this.setState({
+            currentUser: response
+          })
+        }
+      })
     }
+    fetch('http://localhost:3000/stores')
+    .then(response => response.json())
+    .then(stores => this.setState({ stores: stores }))
+  }
+
   setUser = (user) => {
     this.setState({
       currentUser: user
@@ -60,7 +66,9 @@ class App extends React.Component {
         <Route path='/signup' render={() => <SignUp setUser={this.setUser}/> } />
         <Route path='/login' render={() => <Login setUser={this.setUser}/> } />
         <Route path='/store' render={() => <Store currentUser={this.state.currentUser} /> } />
-        <Route path='/mall' render={(routerProps) => <MallContainer currentUser={this.state.currentUser} {...routerProps} /> } />
+        <Route path={'/store/:storeName'} render={routerProps => <Store currentUser={this.state.currentUser} {...routerProps} /> }/>
+        <Route path='/mall' render={(routerProps) => <MallContainer currentUser={this.state.currentUser} {...routerProps} stores={this.state.stores} /> } />
+        <Route path='/cart' render={() => <Cart currentUser={this.state.currentUser} /> } />
         <Route path='/' component={WelcomePage} />
       </Switch> 
     )
