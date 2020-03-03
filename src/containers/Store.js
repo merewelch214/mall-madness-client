@@ -38,13 +38,12 @@ class Store extends React.Component {
     }
 
     render(){
-        console.log(this.state)
         const { name, products, id } = this.state.store
         return (
             <div>
                 <h2>{name}</h2>
                 {products ? products.map(product => {
-                    return <Product key={product.id} {...product} currentUser={this.props.currentUser}/>
+                    return <Product key={product.id} currentUser={this.props.currentUser} {...product} />
                 }) : null}
                 {this.props.currentUser.role === 'owner' ? <button onClick={this.changeDisplayForm}>Toggle Form</button> : <div><h1> ---------- </h1>
                 <button onClick={this.props.revertChosen}>Back To Mall View</button></div>}

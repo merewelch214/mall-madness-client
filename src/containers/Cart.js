@@ -2,18 +2,22 @@ import React from 'react';
 import Product from '../components/Product'
 
 class Cart extends React.Component {
-    
+    state = {
+        products: []
+    }
+
     componentDidMount() {
-        fetch(`http://localhost:3000/carts`)
-        .then(resp => resp.json())
-        .then(data => console.log(data))
+        fetch(`http://localhost:3000/carts/${this.props.currentUser.cart.id}`)
+        .then(response => response.json())
+        .then(data => console.log(data.products))
     }
     
     render(){
         return (
             <div>
                 <h1>Cart</h1>
-                <Product parent={"cart"}/>
+                {this.state.products.map(product => {
+                    return <Product />})}
             </div>
         )
     }

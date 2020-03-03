@@ -1,8 +1,8 @@
 import React from 'react';
 import StoreForm from '../components/StoreForm'
 import Store from './Store'
-import Cart from './Cart'
 import StoreList from '../components/StoreList'
+import Cart from './Cart'
 
 class MallContainer extends React.Component {
 
@@ -40,7 +40,8 @@ class MallContainer extends React.Component {
                     return <StoreList setStore={this.setStore} key={store.id} store={store} />
                 })}</div>}
                 {this.state.stores ? null : <StoreForm /> }
-                <Cart currentUser={this.props.currentUser}/>
+                <Cart currentUser={this.props.currentUser}
+                />
             </div>
         )
     }

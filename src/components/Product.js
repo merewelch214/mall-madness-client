@@ -1,54 +1,21 @@
 import React from 'react';
+import CartButtons from './CartButtons'
+import EditButtons from './EditButtons'
 
 class Product extends React.Component {
     state = {
         inCart: false
     }
 
-    addToCart = (id) => {
-        this.setState({
-            inCart: true
-        })
-        fetch(`http://localhost:3000/products/${id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-                cart_id: this.props.currentUser.cart.id
-            })
-        })
-        .then(resp=>resp.json())
-        .then(data=>console.log(data))
-    }
-
-    removeFromCart = (id) => {
-        this.setState({
-            inCart: false
-        })
-        fetch(`http://localhost:3000/products/${id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-                cart_id: null
-            })
-        })
-        .then(resp=>resp.json())
-        .then(data=>console.log(data))    
-    }
-    
     render(){
+        console.log(this.props)
         return (
         <div>
             <h1>{this.props.name}</h1>
             <img src={this.props.img_url} alt={this.props.name}/>
-            { this.state.inCart ? 
-                <button onClick={() => this.removeFromCart(this.props.id)}>Remove from Cart</button> : 
-                <button onClick={() => this.addToCart(this.props.id)}>Add to Cart</button> }
+            {this.props.currentUser.role === 'shopper' ? 
+                <CartButtons currentUser={this.props.currentUser} currentProductId={this.props.id}/> :
+                <EditButtons currentUser={this.props.currentUser} currentProductId={this.props.id}/> }
         </div>
         )
     }
