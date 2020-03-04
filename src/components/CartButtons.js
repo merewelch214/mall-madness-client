@@ -14,7 +14,7 @@ class CartButtons extends React.Component {
             })
         })
         .then(resp => resp.json())
-        .then(data => console.log(data))
+        .then(data => this.props.updateProducts(data))
     }
 
     removeFromCart = (id) => {
@@ -28,10 +28,12 @@ class CartButtons extends React.Component {
                 cart_id: null
             })
         })
+        .then(resp => resp.json())
+        .then(data => this.props.updateProducts(data))
     }
     
     render() {
-        console.log('')
+        console.log(this.props)
         return (
             <div>
             { this.props.currentProduct.cart_id ?
