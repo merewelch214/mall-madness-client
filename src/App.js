@@ -67,7 +67,7 @@ class App extends React.Component {
   // }
   
   render() {  
-    console.log(this.state.currentUser)
+    console.log(this.state)
     return (
       <Switch> 
         <Route path='/signup' render={() => <SignUp setUser={this.setUser}/> } />

@@ -2,6 +2,7 @@ import React from 'react';
 import Product from '../components/Product'
 import ProductForm from '../components/ProductForm'
 import NavBar from '../components/NavBar'
+import StoreForm from '../components/StoreForm'
 
 class Store extends React.Component {
 
@@ -41,7 +42,6 @@ class Store extends React.Component {
         }
     }
 
-    
 
     updateProducts = (product) => {
         const findMatch = (stateProduct) => stateProduct.id === product.id
@@ -55,14 +55,15 @@ class Store extends React.Component {
 
     render(){
         const { name, id } = this.state.store
+
         return (
             <div>
                 <NavBar />
-                <h2>{name}</h2>
+                {this.state.store.name ? <h2>{name}</h2> : <StoreForm currentUser={this.props.currentUser}/>}
                 {this.state.products ? this.state.products.map(product => {
                     return <Product key={product.id} currentUser={this.props.currentUser} {...product} updateProducts={this.updateProducts}/>
                 }) : null}
-                {this.props.currentUser.role === 'owner' ? <button onClick={this.changeDisplayForm}>Toggle Form</button> : null}
+                {this.props.currentUser.role === 'owner' ? <button onClick={this.changeDisplayForm}>Add new product</button> : null}
                 {this.state.displayForm ? <ProductForm id={id} submitNewProduct={this.submitNewProduct} /> : null}
             </div>
         )
