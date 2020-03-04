@@ -64,8 +64,8 @@ class Store extends React.Component {
         return (
             <div>
                 <NavBar />
-                {!!this.state.store.name ? <h2> {this.state.store.name} </h2>  : <StoreForm currentUser={this.props.currentUser} updateStoreState={this.updateStoreState}/> } 
-                <div className="store-products-list">
+                {!!this.state.store.name ? <h2 className="title-text"> {this.state.store.name} </h2>  : <StoreForm currentUser={this.props.currentUser}/> } 
+                <div className="products-list">
                     {this.state.products ? this.state.products.map(product => {
                         return <Product key={product.id} currentUser={this.props.currentUser} {...product} updateProducts={this.updateProducts}/>
                     }) : null} 

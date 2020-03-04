@@ -24,10 +24,12 @@ class Cart extends React.Component {
         return (
             <div>
                 <NavBar />
-                <h1>Cart</h1>
-                {products ? products.map(product => {
-                    return <Product key={product.id} currentUser={this.props.currentUser} {...product} updateProducts={this.updateProducts} />
-                }) : 'Your cart is empty.'}
+                <h2 className="title-text">Your Cart</h2>
+                <div className="products-list">
+                    {products ? products.map(product => {
+                        return <Product key={product.id} currentUser={this.props.currentUser} {...product} updateProducts={this.updateProducts} />
+                    }) : 'Your cart is empty.'}
+                </div>
             </div>
         )
     }
