@@ -58,13 +58,13 @@ class App extends React.Component {
     .then(cart => this.setState({ cart: cart }))
   }
 
-  // TO DO: add log out button
-  // logOut = () => {
-  //   this.setState({
-  //     currentUser: null
-  //   }, () => {this.props.history.push('/login')}
-  //   )
-  // }
+
+    logOut = () => {
+        this.setState({
+        currentUser: null
+        }, () => {this.props.history.push('/login')}
+        )
+    }
   
   render() {  
     console.log(this.state)
@@ -76,7 +76,7 @@ class App extends React.Component {
         <Route path='/store' render={() => <Store currentUser={this.state.currentUser}/> } />
         <Route path='/mall' render={(routerProps) => <MallContainer currentUser={this.state.currentUser} {...routerProps} stores={this.state.stores} /> } />
         <Route path='/cart' render={() => <Cart currentUser={this.state.currentUser} userCart={this.fillCart} /> } />
-        <Route path='/' component={WelcomePage} />
+        <Route path='/' component={WelcomePage}  />
       </Switch> 
     )
   }
