@@ -21,7 +21,7 @@ class Store extends React.Component {
             body: JSON.stringify(product)
         })
         .then(response => response.json())
-        .then(newProduct => this.setState({ products : [...this.state.store.products, newProduct] }))
+        .then(newProduct => this.setState({ products : [...this.state.products, newProduct] }))
     }
 
     changeDisplayForm = () => {
@@ -33,7 +33,7 @@ class Store extends React.Component {
             fetch(`http://localhost:3000/showBasedOnOwner/${this.props.currentUser.id}`)
             .then(response => response.json())
             .then(store => {
-                this.setState({ store: store })
+                this.setState({ store: store, products: store.products })
             })
         } else {
             const matchingStore = this.props.stores.find(store => store.name === this.props.match.params.storeName)
