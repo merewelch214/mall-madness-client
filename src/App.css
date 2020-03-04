@@ -83,3 +83,61 @@
   width: 33%;
   height: auto;
 }
+h1 {
+  color: #f7f75c;
+  font-size: 100px;
+  font-style: italic;
+}
+
+button {
+  background: #9f5cf7;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-style: bold;
+  margin: 20px;
+  border-radius: 4px;
+}
+
+.welcome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+a:link {
+  color: white;
+}
+
+/* visited link */
+a:visited {
+  color:  hotpink;
+}
+
+/* mouse over link */
+a:hover {
+  color: hotpink;
+}
+
+/* selected link */
+a:active {
+  color: hotpink;
+}
+
+#parallelogram {
+  display: flex;
+  justify-content: center;
+  width: 750px;
+  height: 250px;
+  transform: skew(-20deg);
+  background: #5cddf7;
+  align-items: center;
+}
+
+body {
+  background-color: #ff80ff;
+}
+
