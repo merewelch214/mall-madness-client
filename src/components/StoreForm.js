@@ -12,7 +12,8 @@ class StoreForm extends React.Component {
         })
     }
 
-    submitHandler = () => {
+    submitHandler = (event) => {
+        event.preventDefault()
         fetch(`http://localhost:3000/stores/${this.props.currentUser.store.id}`, {
             method: 'PATCH',
             headers: {
@@ -21,7 +22,7 @@ class StoreForm extends React.Component {
             },
             body: JSON.stringify(this.state)
         })
-        .then(resp=>resp.json)
+        .then(resp=>resp.json())
         .then(data=>console.log(data))
     }
     
@@ -29,7 +30,7 @@ class StoreForm extends React.Component {
         return (
         <div>
             <h1> Create Your Store </h1>
-            <form id='create-store-form' onSubmit={console.log(this.state)}>
+            <form id='create-store-form' onSubmit={this.submitHandler}>
                 <label>Name: </label>
                 <input type='text' name='name' value={this.state.name}  placeholder="Store Name" onChange={this.updateState} /><br />
                 <label>Category: </label>

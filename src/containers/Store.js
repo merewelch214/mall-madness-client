@@ -38,7 +38,6 @@ class Store extends React.Component {
         } else {
             const matchingStore = this.props.stores.find(store => store.name === this.props.match.params.storeName)
             this.setState({ store: matchingStore, products: matchingStore.products })
-            // console.log(this.props.match.params.storeName)
         }
     }
 
@@ -54,17 +53,16 @@ class Store extends React.Component {
     }
 
     render(){
-        const { name, id } = this.state.store
-
+        console.log(this.state.store)
         return (
             <div>
                 <NavBar />
-                {this.state.store.name ? <h2>{name}</h2> : <StoreForm currentUser={this.props.currentUser}/>}
+                {!!this.state.store.name ? <h2> {this.state.store.name} </h2>  : <StoreForm currentUser={this.props.currentUser}/> } 
                 {this.state.products ? this.state.products.map(product => {
                     return <Product key={product.id} currentUser={this.props.currentUser} {...product} updateProducts={this.updateProducts}/>
-                }) : null}
-                {this.props.currentUser.role === 'owner' ? <button onClick={this.changeDisplayForm}>Add new product</button> : null}
-                {this.state.displayForm ? <ProductForm id={id} submitNewProduct={this.submitNewProduct} /> : null}
+                }) : null} 
+                {this.props.currentUser.role === 'owner' && !!this.state.store.name ? <button onClick={this.changeDisplayForm}>Add new product</button> : null}
+                {this.state.displayForm ? <ProductForm id={this.state.store.id} submitNewProduct={this.submitNewProduct} /> : null}
             </div>
         )
     }
