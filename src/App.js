@@ -6,6 +6,7 @@ import SignUp from './components/SignUp'
 import Store from './containers/Store'
 import WelcomePage from './containers/WelcomePage'
 import Cart from './containers/Cart'
+import './App.css'
 
 class App extends React.Component {
   state = {
@@ -69,6 +70,7 @@ class App extends React.Component {
   render() {  
     console.log(this.state)
     return (
+      <div className="App">
       <Switch> 
         <Route path='/signup' render={() => <SignUp setUser={this.setUser}/> } />
         <Route path='/login' render={() => <Login setUser={this.setUser} userCart={this.fillCart}/> } />
@@ -78,6 +80,7 @@ class App extends React.Component {
         <Route path='/cart' render={() => <Cart currentUser={this.state.currentUser} userCart={this.fillCart} /> } />
         <Route path='/' component={WelcomePage}  />
       </Switch> 
+      </div>
     )
   }
 }
