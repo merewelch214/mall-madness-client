@@ -71,15 +71,15 @@ class App extends React.Component {
     console.log(this.state)
     return (
       <div className="App">
-      <Switch> 
-        <Route path='/signup' render={() => <SignUp setUser={this.setUser}/> } />
-        <Route path='/login' render={() => <Login setUser={this.setUser} userCart={this.fillCart}/> } />
-        <Route path='/store/:storeName' render={(routerProps) => <Store currentUser={this.state.currentUser} {...routerProps} stores={this.state.stores}/> }/>
-        <Route path='/store' render={() => <Store currentUser={this.state.currentUser}/> } />
-        <Route path='/mall' render={(routerProps) => <MallContainer currentUser={this.state.currentUser} {...routerProps} stores={this.state.stores} /> } />
-        <Route path='/cart' render={() => <Cart currentUser={this.state.currentUser} userCart={this.fillCart} /> } />
-        <Route path='/' component={WelcomePage} />
-      </Switch> 
+        <Switch> 
+          <Route path='/signup' render={() => <SignUp setUser={this.setUser}/> } />
+          <Route path='/login' render={() => <Login setUser={this.setUser} userCart={this.fillCart}/> } />
+          <Route path='/store/:storeName' render={(routerProps) => <Store currentUser={this.state.currentUser} {...routerProps} stores={this.state.stores}/> }/>
+          <Route path='/store' render={() => <Store currentUser={this.state.currentUser}/> } />
+          <Route path='/mall' render={(routerProps) => <MallContainer currentUser={this.state.currentUser} {...routerProps} stores={this.state.stores} /> } />
+          <Route path='/cart' render={() => <Cart currentUser={this.state.currentUser} userCart={this.fillCart} /> } />
+          <Route path='/' component={WelcomePage} />
+        </Switch> 
       </div>
     )
   }

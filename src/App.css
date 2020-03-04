@@ -37,9 +37,28 @@
   }
 }
 
-.store-list {
+.store-parent {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-content: space-between;
   flex-wrap: wrap;
+}
+
+.store-items-left {
+  padding-right: 40%;
+}
+
+/* .store-items-right {
+  padding-left: 50%;
+} */
+
+.store-list-item-box {
+  height: 250px;
+  width: 450px;
+  /* margin: 15%; */
+  background-color: peachpuff;
+  border: solid black 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
