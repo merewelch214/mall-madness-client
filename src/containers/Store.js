@@ -58,11 +58,13 @@ class Store extends React.Component {
             <div>
                 <NavBar />
                 {!!this.state.store.name ? <h2> {this.state.store.name} </h2>  : <StoreForm currentUser={this.props.currentUser}/> } 
-                {this.state.products ? this.state.products.map(product => {
-                    return <Product key={product.id} currentUser={this.props.currentUser} {...product} updateProducts={this.updateProducts}/>
-                }) : null} 
-                {this.props.currentUser.role === 'owner' && !!this.state.store.name ? <button onClick={this.changeDisplayForm}>Add new product</button> : null}
-                {this.state.displayForm ? <ProductForm id={this.state.store.id} submitNewProduct={this.submitNewProduct} /> : null}
+                <div className="store-products-list">
+                    {this.state.products ? this.state.products.map(product => {
+                        return <Product key={product.id} currentUser={this.props.currentUser} {...product} updateProducts={this.updateProducts}/>
+                    }) : null} 
+                    {this.props.currentUser.role === 'owner' && !!this.state.store.name ? <button onClick={this.changeDisplayForm}>Add new product</button> : null}
+                    {this.state.displayForm ? <ProductForm id={this.state.store.id} submitNewProduct={this.submitNewProduct} /> : null}
+                </div>
             </div>
         )
     }
