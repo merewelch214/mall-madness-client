@@ -41,8 +41,6 @@ class MallContainer extends React.Component {
                 <NavBar />
                 <div>
                     <h1>Mall Madness!</h1>
-                    <h1>-------------</h1><br />
-                    <h1>Please select a store:</h1>
                     <div className="store-list">
                         {this.splitStores()}
                     </div>

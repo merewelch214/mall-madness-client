@@ -27,9 +27,10 @@ class Product extends React.Component {
         } 
 
         return (    
-        <div>
-            <h1>{this.props.name}</h1>
-            <img src={this.props.img_url} alt={this.props.name}/>
+        <div className={"product-card"}>
+            <h1 className="product-title">{this.props.name}</h1><br/>
+            <img className="product-img" src={this.props.img_url} alt={this.props.name}/><br/>
+            <p className="product-description">{this.props.description}</p>
             {buttons}
         </div>
         )

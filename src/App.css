@@ -56,9 +56,30 @@
   height: 250px;
   width: 450px;
   /* margin: 15%; */
-  background-color: peachpuff;
+  background-color: #5cddf7;
   border: solid black 2px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.store-products-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  border-radius: 15px;
+}
+
+.product-card {
+  height: auto;
+  width: 450px;
+  /* margin: 15%; */
+  background-color: #5cddf7;
+  border: solid black 2px;
+  justify-content: center;
+}
+
+.product-img {
+  width: 33%;
+  height: auto;
 }
