@@ -2,15 +2,28 @@ import React from 'react';
 
 class EditButtons extends React.Component {
     
-    // state = {
-    //     editForm: false
-    // }
+    state = {
+        name: '',
+        description: '',
+        price: '',
+        image: '',
+        store_id: this.props.id,
+        editFormToggle: false
+    }
 
-    // showEditForm = () => {
-    //     <form onSubmit={handleEdit}>
+    editFormToggle = () => {
+        this.setState({
+            editFormToggle: !this.state.editFormToggle
+        })
+    }
 
-    //     </form>
-    // }
+    showEditForm = () => {
+        return(
+            <form>
+                <input type='text'>Name</input>
+            </form>
+        )
+    }
 
     
     handleEdit = (id) => {
@@ -44,7 +57,7 @@ class EditButtons extends React.Component {
     render() {
         return (
             <div>
-                <button onClick={() => this.handleEdit(this.props.currentProduct.id)}>Edit</button>
+                <button onClick={this.editFormToggle ? this.showEditForm : null}>Edit</button>
                 <button onClick={() => this.handleDelete(this.props.currentProduct.id)}>Delete</button>
             </div>
         )

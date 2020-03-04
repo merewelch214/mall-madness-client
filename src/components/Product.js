@@ -3,20 +3,23 @@ import CartButtons from './CartButtons'
 import EditButtons from './EditButtons'
 
 class Product extends React.Component {
+
+    state = {
+        inCart: !!this.props.cart_id 
+    }
     
     render(){
-
+        console.log(this.props)
         const userType = this.props.currentUser.role
         const cartId = this.props.cart_id
         let buttons;
 
-
-        if ((cartId === this.props.currentUser.cart.id || cartId === null) && userType === 'shopper') {
-            buttons = <CartButtons currentProduct={this.props}/>
+        if ((cartId === this.props.currentUser.cart.id || cartId === null) && userType === 'shopper') {            
+            buttons = <CartButtons currentProduct={this.props} inCart={this.state.inCart} updateProducts={this.props.updateProducts}/>
         } else if (userType === 'shopper' && cartId) {
             buttons = <p>This product is out of stock.</p>
         } else if (userType === 'owner' && cartId === null) {
-            buttons = <EditButtons currentProduct={this.props}/>
+            buttons = <EditButtons currentProduct={this.props} inCart={this.state.inCart} updateProducts={this.props.updateProducts}/>
         } else if (userType === 'owner' && cartId) {
             buttons = <p>This product has sold!</p>
         } 
