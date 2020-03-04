@@ -65,7 +65,7 @@
 
 .store-products-list {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
   border-radius: 15px;
 }
@@ -88,6 +88,11 @@ h1 {
   font-size: 100px;
   font-style: italic;
 }
+
+p {
+  font-style: italic;
+}
+
 
 button {
   background: #9f5cf7;
