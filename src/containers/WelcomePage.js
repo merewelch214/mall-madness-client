@@ -12,8 +12,8 @@ class WelcomePage extends React.Component {
                 </div>
                 <br />
                 <div className='login'>
-                    <button className='login-button'><Link to='/login' >Login</Link></button>
-                    <button className='login-button'><Link to='/signup' >SignUp</Link></button>
+                    <button className='login-button'><Link to='/login' >LOGIN </Link></button>
+                    <button className='login-button'><Link to='/signup' >SIGN UP</Link></button>
                 </div>
             </div>
         )

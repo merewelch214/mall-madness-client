@@ -41,27 +41,32 @@ class SignUp extends React.Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}> 
-                    <label>Username:
-                    <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
-                    </label>
-                    <label>Password:
-                    <input type='text' name='password' value={this.state.password} onChange={this.handleChange}/>
-                    </label>
-                    <label>Password Confirmation:
-                    <input type='text' name='passwordConfirmation' value={this.state.passwordConfirmation} onChange={this.handleChange}/>
-                    </label>
-                    <label>Are you signing up as a shopper or owner? 
-                        <select name='role' value={this.state.role} onChange={this.handleChange}>
-                            <option value=''>Select role</option>
-                            <option value='owner'>Owner</option>
-                            <option value='shopper'>Shopper</option>
-                        </select>
-                    </label>
-                    <button type="submit" value="Submit" > Sign up </button>    
-                </form>
-                <Link to='/login' >Login</Link>
+        <div className='welcome'>
+            <div id = 'parallelogram' >
+                <h1> MALL MADNESS</h1>
+            </div>
+                <div className='login-container'>
+                    <form onSubmit={this.handleSubmit}> 
+                        <label>Username <br />
+                        <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/><br /><br />
+                        </label>
+                        <label>Password <br />
+                        <input type='text' name='password' value={this.state.password} onChange={this.handleChange}/> <br /><br />
+                        </label>
+                        <label>Password Confirmation <br />
+                        <input type='text' name='passwordConfirmation' value={this.state.passwordConfirmation} onChange={this.handleChange}/> <br /><br />
+                        </label>
+                        <label>Are you signing up as a shopper or owner? 
+                            <select name='role' value={this.state.role} onChange={this.handleChange}>
+                                <option value=''>Select role</option>
+                                <option value='owner'>Owner</option>
+                                <option value='shopper'>Shopper</option>
+                            </select>
+                        </label>
+                        <button type="submit" value="Submit" > Sign up </button>    
+                    </form>
+                    <Link to='/login' >Login</Link>
+                </div>
             </div>
         )
     }
