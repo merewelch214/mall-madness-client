@@ -101,7 +101,7 @@ button {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 20px;
   font-style: bold;
   margin: 20px;
   border-radius: 4px;
@@ -109,30 +109,35 @@ button {
 
 .welcome {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: center space-around;
   align-items: center;
-
 }
+
 a:link {
   color: white;
+  text-decoration: none;
 }
 
 /* visited link */
 a:visited {
-  color:  hotpink;
+  color:  #ff80ff;
+  text-decoration: none;
 }
 
 /* mouse over link */
 a:hover {
-  color: hotpink;
+  color: #ff80ff;
+  text-decoration: none;
 }
 
 /* selected link */
 a:active {
-  color: hotpink;
+  color: #ff80ff;
 }
 
 #parallelogram {
+  margin: 40px;
   display: flex;
   justify-content: center;
   width: 750px;
@@ -140,9 +145,29 @@ a:active {
   transform: skew(-20deg);
   background: #5cddf7;
   align-items: center;
+  border-radius: 4px;
 }
 
 body {
   background-color: #ff80ff;
+  font-size: 20px;
+  font-family: Verdana;
 }
 
+input {
+  color: #5cddf7
+}
+
+.login-container {
+  background:  #5cddf7;
+  width: 300px;
+  height: 300px;
+  border-radius: 4px;
+}
+
+.login-button {
+  height: 100px;
+  width: 300px;
+  font-size: 40px;
+  font-style: bold;
+}
