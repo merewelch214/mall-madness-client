@@ -6,10 +6,15 @@ class WelcomePage extends React.Component {
     
     render() {
         return (
-            <div>
-                <h1> Welcome to the mall! </h1>
-                <Link to='/login' >Login</Link>
-                <Link to='/signup' >SignUp</Link>
+            <div className='welcome'>
+                <div id = 'parallelogram' >
+                    <h1> MALL MADNESS</h1>
+                </div>
+                <br />
+                <div className='login'>
+                    <button className='login-button'><Link to='/login' >Login</Link></button>
+                    <button className='login-button'><Link to='/signup' >SignUp</Link></button>
+                </div>
             </div>
         )
     }
