@@ -7,17 +7,17 @@ const NavBar = () => {
       <NavLink
         to="/mall"
         exact
-        >Back to Mall</NavLink>
+        ><button>Back to Mall</button></NavLink>
 
         <NavLink
         to="/"
         exact
-        >Log Out</NavLink>
+        ><button>Log Out</button></NavLink>
 
         <NavLink
         to="/cart"
         exact
-        >Cart</NavLink>
+        ><button>Cart</button></NavLink>
       {/*{code here}*/}
     </div>
   );

@@ -63,9 +63,9 @@
   align-items: center;
 }
 
-.store-products-list {
+.products-list {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
   border-radius: 15px;
 }
@@ -77,6 +77,7 @@
   background-color: #5cddf7;
   border: solid black 2px;
   justify-content: center;
+  border-radius: 4px;
 }
 
 .product-img {
@@ -146,3 +147,12 @@ body {
   background-color: #ff80ff;
 }
 
+.navbar {
+  background-color: #5cddf7;
+}
+
+.title-text {
+  color: #f7f75c;
+  font-size: 36px;
+  font-style: italic;
+}
