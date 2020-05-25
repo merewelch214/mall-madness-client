@@ -26,7 +26,7 @@ class SignUp extends React.Component {
                     username: this.state.username, 
                     password: this.state.password,
                     role: this.state.role
-                     })
+                })
             })
             .then(response => response.json())
             .then(user => {
@@ -65,7 +65,7 @@ class SignUp extends React.Component {
                         </label>
                         <button type="submit" value="Submit" > Sign up </button>    
                     </form>
-                    <Link to='/login' >Login</Link>
+                    <p>Already have an account?<Link to='/login' >Login</Link></p>
                 </div>
             </div>
         )

@@ -16,12 +16,12 @@ class App extends React.Component {
     cart: []
   }
 
-  alert = () => {
-    this.myRef = React.createRef();
-    return (
-      <audio ref={this.myRef} src={"https://preview.dewolfemusic.com/S168595_128.mp3"} autoPlay />
-    )
-  }
+  // alert = () => {
+  //   this.myRef = React.createRef();
+  //   return (
+  //     <audio ref={this.myRef} src={"https://preview.dewolfemusic.com/S168595_128.mp3"} autoPlay />
+  //   )
+  // }
 
   componentDidMount() {
     const user_id = localStorage.user_id
@@ -77,15 +77,13 @@ class App extends React.Component {
 
   render() {
     console.log(this.state)
-    this.alert()
+    // this.alert()
     return (
       <div className="App">
         <audio
           autoPlay={true}
-          src="https://preview.dewolfemusic.com/S168595_128.mp3">
-              Your browser does not support the
-              <code>audio</code> element.
-        </audio>
+          loop={true}
+          src="https://preview.dewolfemusic.com/S168595_128.mp3"/>
         <Switch>
           <Route path='/signup' render={() => <SignUp setUser={this.setUser} />} />
           <Route path='/login' render={() => <Login setUser={this.setUser} userCart={this.fillCart} />} />

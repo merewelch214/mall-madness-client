@@ -40,7 +40,7 @@
 .store-parent {
   display: flex;
   flex-direction: row;
-  align-content: space-between;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 
@@ -61,6 +61,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 50px;
 }
 
 .products-list {
@@ -147,6 +148,7 @@ a:active {
   background: #5cddf7;
   align-items: center;
   border-radius: 4px;
+  box-shadow: 5px 6px #9f5cf7;
 }
 
 body {
@@ -162,7 +164,7 @@ input {
 .login-container {
   background:  #5cddf7;
   width: 300px;
-  height: 300px;
+  height: auto;
   border-radius: 4px;
 }
 
