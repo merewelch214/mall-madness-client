@@ -18,7 +18,6 @@ const NavBar = () => {
         to="/cart"
         exact
         ><button>Cart</button></NavLink>
-      {/*{code here}*/}
     </div>
   );
 };

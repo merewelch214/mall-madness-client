@@ -43,8 +43,6 @@ class EditButtons extends React.Component {
     }
 
     handleDelete = (id) => {
-        // to do: remove product
-        console.log('testing delete')
         fetch(`http://localhost:3000/products/${id}`, {
             method: 'DELETE',
             headers: {

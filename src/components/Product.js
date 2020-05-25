@@ -9,7 +9,6 @@ class Product extends React.Component {
     }
     
     render(){
-        console.log(this.props)
         const userType = this.props.currentUser.role
         const cartId = this.props.cart_id
         let buttons;

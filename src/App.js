@@ -7,7 +7,6 @@ import Store from './containers/Store'
 import WelcomePage from './containers/WelcomePage'
 import Cart from './containers/Cart'
 import './App.css'
-// import soundfile from './supermarket.mp3'
 
 class App extends React.Component {
   state = {
@@ -15,13 +14,6 @@ class App extends React.Component {
     stores: [],
     cart: []
   }
-
-  // alert = () => {
-  //   this.myRef = React.createRef();
-  //   return (
-  //     <audio ref={this.myRef} src={"https://preview.dewolfemusic.com/S168595_128.mp3"} autoPlay />
-  //   )
-  // }
 
   componentDidMount() {
     const user_id = localStorage.user_id
@@ -56,7 +48,7 @@ class App extends React.Component {
       } else if (this.state.currentUser.role === 'owner') {
         localStorage.user_id = user.id
         localStorage.role = user.role
-        this.props.history.push('/store') // need to redirect to the particular owners store
+        this.props.history.push('/store') // Need to redirect to the particular owners store
       }
     })
   }
@@ -76,12 +68,10 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state)
-    // this.alert()
     return (
       <div className="App">
         <audio
-          autoPlay={true}
+          autoPlay={false} // Set to true if you want audio to play. WARNING: Not good conventionally.
           loop={true}
           src="https://preview.dewolfemusic.com/S168595_128.mp3"/>
         <Switch>
